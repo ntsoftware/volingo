@@ -1,0 +1,74 @@
+#hwr {
+  position: relative;
+  z-index: 100;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+  height: 250px;
+  margin-top: 20px;
+  margin-left: 30px;
+  margin-right: 30px;
+  background: data-uri("../images/line-pattern.png");
+
+  .ink-view {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+
+  .locale-btn {
+    position: absolute;
+    color: #686868;
+    font: bold 12px sans-serif;
+    text-align: center;
+    width: 88px;
+    height: 22px;
+    line-height: 22px;
+    top: 8px;
+    left: 8px;
+    background: data-uri("../images/btn-locale.png");
+  }
+
+  .locale-btn:active, .locale-btn.pressed {
+    color: #ffffff;
+    background: data-uri("../images/btn-locale-pressed.png");
+  }
+
+  .clear-btn {
+    position: absolute;
+    width: 44px;
+    height: 44px;
+    top: 8px;
+    right: 8px;
+    background: data-uri("../images/btn-clear.png");
+  }
+
+  .clear-btn:active, .clear-btn.pressed {
+    background: data-uri("../images/btn-clear-pressed.png");
+  }
+
+  .delete-btn {
+    position: absolute;
+    width: 44px;
+    height: 44px;
+    top: 8px;
+    right: 58px;
+    background: data-uri("../images/btn-delete.png");
+  }
+
+  .delete-btn:active, .delete-btn.pressed {
+    background: data-uri("../images/btn-delete-pressed.png");
+  }
+
+  .space-btn {
+    position: absolute;
+    width: 44px;
+    height: 44px;
+    top: 8px;
+    right: 108px;
+    background: data-uri("../images/btn-space.png");
+  }
+
+  .space-btn:active, .space-btn.pressed {
+    background: data-uri("../images/btn-space-pressed.png");
+  }
+}

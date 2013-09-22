@@ -1,0 +1,20 @@
+{
+  "name": "hwr-proxy",
+  "version": "0.0.1",
+  "author": "Nicolas Torneri",
+  "description": "a proxy to add handwriting recognition to Duolingo exercises",
+  "dependencies": {
+    "http-proxy": "latest",
+    "tamper": "latest",
+    "express": "latest",
+    "request": "latest"
+  },
+  "devDependencies": {
+    "require": "latest",
+    "less": "latest"
+  },
+  "engines": {
+    "node": "0.10.x",
+    "npm": "1.2.x"
+  }
+}
