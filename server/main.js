@@ -40,6 +40,7 @@ var headText =
   '<link rel="apple-touch-icon" href="/volingo/images/icon.png"/>';
 
 var bodyText =
+  '<script src="/volingo/scripts/analytics.js"></script>' +
   '<script src="/volingo/build/content-script.js"></script>';
 
 app.use(livepatch(headText, bodyText));
