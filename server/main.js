@@ -35,11 +35,17 @@ app.use('/volingo', express.static(path.join(__dirname, '../client')));
 
 app.use('/hwr', hwr(config.API_KEY));
 
+var volingo = {
+  contactUrl: config.CONTACT_URL,
+  contactText: config.CONTACT_TEXT
+};
+
 var headText =
   '<meta name="apple-mobile-web-app-capable" content="yes"/>' +
   '<link rel="apple-touch-icon" href="/volingo/images/icon.png"/>';
 
 var bodyText =
+  '<script>window.volingo=' + JSON.stringify(volingo) + ';</script>' +
   '<script src="/volingo/scripts/analytics.js"></script>' +
   '<script src="/volingo/build/content-script.js"></script>';
 

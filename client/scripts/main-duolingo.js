@@ -1,6 +1,12 @@
 require(['text!../templates/panel.html', 'PanelView'], function(template, PanelView) {
   'use strict';
 
+  var matcher = /{{([\s\S]+?)}}/g;
+
+  template = template.replace(matcher, function(match, name) {
+    return volingo[name.trim()];
+  });
+
   var isMobile = /android|iphone|ipad/i.test(navigator.userAgent);
 
   var addHandwritingPanel = function(sessionView, $target) {
