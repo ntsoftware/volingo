@@ -1,0 +1,19 @@
+{
+  "manifest_version": 2,
+
+  "name": "volingo",
+  "description": "This extension adds handwriting recognition to Duolingo exercises.",
+  "version": "1.0",
+
+  "browser_action": {
+    "default_icon": "icon.png",
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["http://www.duolingo.com/*"],
+      "css": [],
+      "js": ["main.js"]
+    }
+  ]
+}

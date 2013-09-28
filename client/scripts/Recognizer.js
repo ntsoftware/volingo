@@ -7,6 +7,12 @@ define(function() {
     this.instanceId = null;
     this.timeoutId = null;
 
+    if (volingo && volingo.hwrUrl) {
+      this.url = volingo.hwrUrl;
+    } else {
+      this.url = '/hwr';
+    }
+
     this.xhr = new XMLHttpRequest();
 
     this.xhr.onreadystatechange = function() {
@@ -64,7 +70,7 @@ define(function() {
 
       var data = params.join('&');
 
-      this.xhr.open('POST', '/hwr', true);
+      this.xhr.open('POST', this.url, true);
       this.xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
       this.xhr.send(data);
     },

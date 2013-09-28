@@ -36,6 +36,7 @@ app.use('/volingo', express.static(path.join(__dirname, '../client')));
 app.use('/hwr', hwr(config.API_KEY));
 
 var volingo = {
+  hwrUrl: config.HWR_URL,
   contactUrl: config.CONTACT_URL,
   contactText: config.CONTACT_TEXT
 };
