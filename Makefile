@@ -3,19 +3,17 @@ SCRIPTS = $(wildcard client/scripts/*)
 
 GOOGLE_CHROME="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 
-all: volingo-proxy chrome-extension
-
-volingo-proxy: content-script
+all: content-script
 
 chrome-extension: extension/build/volingo-chrome.crx extension/build/volingo-chrome.pem
 
 content-script: client/build/content-script.js
 
 client/build/content-script.js: client/styles/styles.css $(SCRIPTS)
-	r.js -o build-config.js include=main-duolingo,styles out=$@
+	node_modules/.bin/r.js -o build-config.js include=main,styles out=$@
 
 client/styles/styles.css: client/styles/styles.less $(IMAGES)
-	lessc --yui-compress $< >$@
+	node_modules/.bin/lessc -x $< >$@
 
 chrome-extension-build: content-script
 	$(GOOGLE_CHROME) --pack-extension=extension/chrome
