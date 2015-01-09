@@ -7,7 +7,7 @@ define(function() {
     var defaults = {
       inkWidth: 4,
       inkColor: '#33b5e5',
-      shadow: true,
+      shadow: false,
       shadowColor: '#000000',
       shadowDx: 1,
       shadowDy: 1,
