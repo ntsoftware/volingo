@@ -1,13 +1,13 @@
 define(function() {
   'use strict';
 
-  var Recognizer = function() {
+  var Recognizer = function(apiKey) {
     var self = this;
 
     this.instanceId = null;
     this.timeoutId = null;
 
-    this.apiKey = 'b3f28937-06fe-4e4a-b9e2-f5189e18962e';
+    this.apiKey = apiKey;
     this.url = 'http://webdemo.myscript.com/api/myscript/v2.0/hwr/doSimpleRecognition.json';
     this.xhr = new XMLHttpRequest();
 

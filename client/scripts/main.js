@@ -4,6 +4,7 @@ require(['text!../templates/panel.html', 'PanelView'], function(template, PanelV
   // custom HTML attributes
   var hwr = {
     id: 'hwr-id',
+    apiKey: 'hwr-apikey',
     locales: 'hwr-locales',
     inkWidth: 'hwr-inkwidth',
     inkColor: 'hwr-inkcolor',
@@ -15,6 +16,9 @@ require(['text!../templates/panel.html', 'PanelView'], function(template, PanelV
 
   function parseHwrOptions(el) {
     var options = {};
+    if (el.hasAttribute(hwr.apiKey)) {
+      options.apiKey = el.getAttribute(hwr.apiKey);
+    }
     if (el.hasAttribute(hwr.locales)) {
       options.locales = el.getAttribute(hwr.locales).trim().split(/\s+/);
     }

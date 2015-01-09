@@ -17,7 +17,7 @@ define(['InkView', 'ButtonView', 'Model', 'Recognizer'], function(InkView, Butto
     this.el = el;
     this.target = target;
 
-    this.recognizer = new Recognizer();
+    this.recognizer = new Recognizer(options.apiKey);
 
     this.recognizer.onresult = function(text) {
       self.onrecoresult(text);
