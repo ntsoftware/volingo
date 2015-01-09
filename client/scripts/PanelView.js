@@ -4,6 +4,16 @@ define(['InkView', 'ButtonView', 'Model', 'Recognizer'], function(InkView, Butto
   var PanelView = function(el, target, options) {
     var self = this;
 
+    options = options || {};
+
+    var defaults = {
+      locales: ['en_US']
+    };
+
+    for (var key in defaults) {
+      options[key] = (key in options ? options[key] : defaults[key]);
+    }
+
     this.el = el;
     this.target = target;
 
@@ -52,7 +62,8 @@ define(['InkView', 'ButtonView', 'Model', 'Recognizer'], function(InkView, Butto
       self.onspaceclick();
     };
 
-    this.setLocale('en_US');
+    this.setAvailableLocales(options.locales);
+    this.setLocale(options.locales[0]);
   };
 
   PanelView.prototype = {

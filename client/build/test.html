@@ -1,14 +1,6 @@
 <html>
   <head>
-    <title>HWR panel development</title>
-    <link rel="stylesheet/less" type="text/css" href="styles/styles.less" />
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/less.js/2.2.0/less.min.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.15/require.min.js"></script>
-    <script>
-      require.config({
-        baseUrl: 'scripts'
-      });
-    </script>
+    <title>HWR panel test</title>
     <style>
       #panel {
         height: 250px;
@@ -17,10 +9,10 @@
         margin-top: 20px;
         margin-left: 30px;
         margin-right: 30px;
-        background: url("build/line-pattern.png");
+        background: url("line-pattern.png");
       }
     </style>
-    <script src="scripts/main.js"></script>
+    <script src="content-script.js"></script>
   </head>
   <body>
     <input hwr-id="my-id">
