@@ -8,7 +8,7 @@ define(function() {
     this.timeoutId = null;
 
     this.apiKey = apiKey;
-    this.url = 'http://webdemo.myscript.com/api/myscript/v2.0/hwr/doSimpleRecognition.json';
+    this.url = 'https://cloud.myscript.com/api/myscript/v2.0/hwr/doSimpleRecognition.json';
     this.xhr = new XMLHttpRequest();
 
     this.xhr.onreadystatechange = function() {
