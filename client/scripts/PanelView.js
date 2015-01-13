@@ -7,12 +7,16 @@ define(['InkView', 'ButtonView', 'Model', 'Recognizer'], function(InkView, Butto
     options = options || {};
 
     var defaults = {
-      locales: ['en_US']
+      locales: ['en_US'],
+      autoCommit: true,
+      autoCommitDelay: 2000
     };
 
     for (var key in defaults) {
       options[key] = (key in options ? options[key] : defaults[key]);
     }
+
+    this.options = options;
 
     this.el = el;
     this.target = target;
@@ -62,7 +66,6 @@ define(['InkView', 'ButtonView', 'Model', 'Recognizer'], function(InkView, Butto
       self.onspaceclick();
     };
 
-    this.setAvailableLocales(options.locales);
     this.setLocale(options.locales[0]);
   };
 
@@ -71,10 +74,6 @@ define(['InkView', 'ButtonView', 'Model', 'Recognizer'], function(InkView, Butto
     // public API
 
     setLocale: function(locale) {
-      if (!this.isLocaleAvailable(locale)) {
-        this.setAvailableLocales([locale]);
-      }
-
       this.locale = locale;
 
       var localeNames = {
@@ -90,31 +89,27 @@ define(['InkView', 'ButtonView', 'Model', 'Recognizer'], function(InkView, Butto
       this.onlocalechange && this.onlocalechange.call(this);
     },
 
-    setAvailableLocales: function(locales) {
-      this.availableLocales = locales;
-    },
-
-    isLocaleAvailable: function(locale) {
-      return this.availableLocales && this.availableLocales.indexOf(locale) >= 0;
-    },
-
     // commit timer
 
     triggerCommitTimer: function() {
-      var self = this;
-      this.timeoutId = window.setTimeout(function() {
-        self.timeoutId = null;
-        self.ontimeout();
-      }, 2000);
+      if (this.options.autoCommit) {
+        var self = this;
+        this.timeoutId = window.setTimeout(function() {
+          self.timeoutId = null;
+          self.ontimeout();
+        }, this.options.autoCommitDelay);
+      }
     },
 
     cancelCommitTimer: function() {
-      window.clearTimeout(this.timeoutId);
-      this.timeoutId = null;
+      if (this.options.autoCommit) {
+        window.clearTimeout(this.timeoutId);
+        this.timeoutId = null;
+      }
     },
 
     shouldCommit: function() {
-      return !this.timeoutId && !this.inkView.drawing && !this.recognizer.isBusy();
+      return this.options.autoCommit && !this.timeoutId && !this.inkView.drawing && !this.recognizer.isBusy();
     },
 
     // target field
@@ -191,10 +186,8 @@ define(['InkView', 'ButtonView', 'Model', 'Recognizer'], function(InkView, Butto
     // buttons
 
     onlocaleclick: function() {
-      if (this.availableLocales) {
-        var i = this.availableLocales.indexOf(this.locale) + 1;
-        this.setLocale(this.availableLocales[i % this.availableLocales.length]);
-      }
+      var i = this.options.locales.indexOf(this.locale) + 1;
+      this.setLocale(this.options.locales[i % this.options.locales.length]);
     },
 
     onclearclick: function() {

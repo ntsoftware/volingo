@@ -11,7 +11,9 @@ require(['text!../templates/panel.html', 'PanelView'], function(template, PanelV
     shadow: 'hwr-shadow',
     shadowColor: 'hwr-shadowcolor',
     shadowDx: 'hwr-shadowdx',
-    shadowDy: 'hwr-shadowdy'
+    shadowDy: 'hwr-shadowdy',
+    autoCommit: 'hwr-autocommit',
+    autoCommitDelay: 'hwr-autocommitdelay'
   };
 
   function parseHwrOptions(el) {
@@ -39,6 +41,12 @@ require(['text!../templates/panel.html', 'PanelView'], function(template, PanelV
     }
     if (el.hasAttribute(hwr.shadowDy)) {
       options.shadowDy = parseInt(el.getAttribute(hwr.shadowDy), 10);
+    }
+    if (el.hasAttribute(hwr.autoCommit)) {
+      options.autoCommit = el.getAttribute(hwr.autoCommit) === 'true';
+    }
+    if (el.hasAttribute(hwr.autoCommitDelay)) {
+      options.autoCommitDelay = parseInt(el.getAttribute(hwr.autoCommitDelay), 10);
     }
     return options;
   }
