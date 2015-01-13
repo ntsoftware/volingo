@@ -10,7 +10,7 @@ chrome-extension: extension/build/volingo-chrome.crx extension/build/volingo-chr
 content-script: client/build/content-script.js
 
 client/build/content-script.js: client/styles/styles.css $(SCRIPTS)
-	node_modules/.bin/r.js -o build-config.js include=main,styles out=$@
+	node_modules/.bin/r.js -o build-config.js include=build out=$@
 
 client/styles/styles.css: client/styles/styles.less $(IMAGES)
 	node_modules/.bin/lessc -x $< >$@
